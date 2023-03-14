@@ -1,0 +1,11 @@
+#homepage-container {
+  /* height: 100vh; */
+  /* border: 1px solid blue; */
+  /* padding: 360px; */
+  display: flex;
+  justify-content: center;
+}
+
+#mouse-img {
+  width: 50%;
+}

@@ -7,7 +7,7 @@ const ResumePage = () => {
     <div id="resume-page">
       <div id="resume-container">
         <a id="download-resume-btn" href={AlmirasResume} download><span>Download Resume</span></a>
-        <img id="resume-img" src={ResumeImg} />
+        <img id="resume-img" src={ResumeImg} alt="almira's resume"/>
       </div>
     </div>
   );

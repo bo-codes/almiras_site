@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import Footer from "./components/Footer/Footer";
 import NavBar from "./components/NavBar/NavBar";
 import AboutPage from "./pages/AboutPage/AboutPage";
 import GalleryPage from "./pages/GalleryPage/GalleryPage";
@@ -16,6 +17,7 @@ const App = () => {
         <Route path="/resume" exact={true} element={<ResumePage />}/>
         <Route path="/gallery" exact={true} element={<GalleryPage />}/>
       </Routes>
+      <Footer />
     </>
   )
 }
