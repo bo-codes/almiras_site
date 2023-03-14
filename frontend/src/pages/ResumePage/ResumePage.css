@@ -1,0 +1,42 @@
+#resume-page {
+  display: flex;
+  justify-content: center;
+}
+
+#resume-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* border: 1px solid blue; */
+  max-width: 800px;
+}
+
+#download-resume-btn {
+  color: white;
+  background-color: #d972a1;
+  text-decoration: none;
+  padding: 14px 20px;
+  text-transform: uppercase;
+  font-family: "chelsea-market-pro", sans-serif;
+  font-weight: 800;
+  font-style: bold;
+  letter-spacing: 1.4px;
+  font-size: 12px;
+}
+
+#resume-img {
+  width: 100%;
+  margin-top: 20px;
+  /* margin-bottom: 20px; */
+}
+
+/* #resume-img {
+  height: 0;
+  width: 100%;
+  background-image: url('../../imgs/almiras_resume.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  padding-top: 1.29%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+} */
