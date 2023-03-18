@@ -4,20 +4,14 @@ const { validationResult } = require("express-validator");
 
 require("dotenv").config();
 
-const users = [
-  {
-    id: "1",
-    name: "Almira Akin",
-    username: process.env.USERNAME,
-    password: process.env.PASSWORD,
-  },
-];
+const User = require("../models/user")
 
-const getUsers = (req, res, next) => {
-  res.json({ users: users });
+const getUsers = async (req, res, next) => {
+  const users = await User.find();
+  res.json(users.map((user) => user.toObject({ getters: true })));
 };
 
-const signup = (req, res, next) => {
+const signup = async(req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     next(new HttpErr("Invalid Credentials", 422));
@@ -25,16 +19,36 @@ const signup = (req, res, next) => {
 
   const { name, username, password } = req.body;
 
-  const createdUser = {
-    id: uuidv4(),
+  let existingUser
+  try {
+    existingUser = await User.findOne({username});
+  } catch (err) {
+    const error = new HttpErr("User with this username already exists.", 422);
+    return next(error);
+  }
+
+  if (existingUser) {
+    const error = new HttpErr(
+      'User with this username already exists.',
+      422
+    )
+    return next(error);
+  }
+
+  const createdUser = new User({
     name,
     username,
     password,
-  };
+  });
 
-  users.push(createdUser);
+  try {
+    await createdUser.save()
+  } catch (err) {
+    const error = new HttpErr('Could not save new user to db.', 500);
+    return next(error)
+  }
 
-  res.status(201).json({ message: `Successfully created user ${createdUser.id}`, users });
+  res.status(201).json({ message: `Successfully created user ${createdUser.id}` });
 };
 
 const login = (req, res, next) => {
