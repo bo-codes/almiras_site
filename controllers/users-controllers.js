@@ -51,12 +51,19 @@ const signup = async(req, res, next) => {
   res.status(201).json({ message: `Successfully created user` });
 };
 
-const login = (req, res, next) => {
+const login = async(req, res, next) => {
   const { username, password } = req.body;
 
-  const identifiedUser = users.find((user) => user.username === username);
-  if (!identifiedUser || identifiedUser.password !== password) {
-    throw new HttpErr("Could not identify user; incorrect credentials.", 401);
+  let existingUser
+  try {
+    existingUser = await User.findOne({username: username});
+  } catch (err) {
+    const error = new HttpErr("User with this username does not exist.", 422);
+    return next(error);
+  }
+
+  if (!existingUser || existingUser.password !== password) {
+    throw new HttpErr("Could not identify user; invalid credentials.", 401);
   }
   res.json({ message: "Successfully logged in." });
 };
