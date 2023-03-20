@@ -13,14 +13,14 @@ const getUsers = async (req, res, next) => {
 const signup = async(req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    next(new HttpErr("Invalid Credentials", 422));
+    return next(new HttpErr("Invalid Credentials", 422));
   }
 
   const { name, username, password } = req.body;
 
   let existingUser
   try {
-    existingUser = await User.findOne({username});
+    existingUser = await User.findOne({username: username});
   } catch (err) {
     const error = new HttpErr("User with this username already exists.", 422);
     return next(error);
@@ -43,11 +43,12 @@ const signup = async(req, res, next) => {
   try {
     await createdUser.save()
   } catch (err) {
+    console.log(createdUser.save())
     const error = new HttpErr('Could not save new user to db.', 500);
     return next(error)
   }
 
-  res.status(201).json({ message: `Successfully created user ${createdUser.id}` });
+  res.status(201).json({ message: `Successfully created user` });
 };
 
 const login = (req, res, next) => {
