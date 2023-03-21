@@ -9,6 +9,8 @@ router.get("/", postsControllers.getAllPosts);
 
 router.get("/:pid", postsControllers.getPostById);
 
+// router.get("/:uid", postsControllers.getPostsByUserId);
+
 router.post(
   "/",
   [check("img").not().isEmpty(), check("description").not().isEmpty()],

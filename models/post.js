@@ -8,7 +8,8 @@ const Schema = mongoose.Schema;
 const postSchema = new Schema({
   // the format for each property of our model is to se the type, then add required if necessary. it's similar to sequelize, etc.
   img: { type: String, required: true},
-  description: { type: String, required: true}
+  description: { type: String, required: true},
+  creator: {type: mongoose.Types.ObjectId, required: true, ref: 'User'}
 })
 
 module.exports = mongoose.model('Post', postSchema);

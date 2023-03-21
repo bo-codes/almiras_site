@@ -46,7 +46,8 @@ app.use((err, req, res, next) => {
 mongoose
   .connect(
     // we are getting this 'url' by going to our cluster in mongodb atlas, and clicking connect, and choosing the connect with application option.
-    "mongodb+srv://bocoding888:Boboji004004@cluster0.7njzpx7.mongodb.net/posts?retryWrites=true&w=majority"
+    // "mongodb+srv://bocoding888:Boboji004004@cluster0.7njzpx7.mongodb.net/posts?retryWrites=true&w=majority"
+    "mongodb+srv://bocoding888:Boboji004004@cluster0.7njzpx7.mongodb.net/almira?retryWrites=true&w=majority"
   )
   .then(app.listen(3001))
   .catch((err) => console.log(err));

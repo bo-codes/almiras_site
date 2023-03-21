@@ -6,9 +6,8 @@ const HttpErr = require("../models/http-err");
 const { validationResult } = require("express-validator");
 
 const Post = require("../models/post");
-
-
-
+const User = require("../models/user");
+const { default: mongoose } = require("mongoose");
 
 const getPostById = async (req, res, next) => {
   const postId = req.params.pid;
@@ -34,6 +33,28 @@ const getPostById = async (req, res, next) => {
   res.json({ post: post.toObject({ getters: true }) });
 };
 
+const getPostsByUserId = async (req, res, next) => {
+  const userId = req.params.uid;
+
+  let userWithPosts;
+  try {
+    userWithPosts = await User.findById(userId).populate("posts");
+  } catch (err) {
+    const error = new HttpErr(
+      "Was not able to search for user with provided userId",
+      500
+    );
+    return next(error);
+  }
+
+  if (!userWithPosts || userWithPosts.length === 0) {
+    const error = new HttpErr("No user found with the provided id", 404);
+    return next(error);
+  }
+
+  res.json({posts: userWithPosts.posts.map(post => post.toObject({getters: true}))})
+};
+
 const getAllPosts = async (req, res, next) => {
   const posts = await Post.find();
   res.json(posts.map((post) => post.toObject({ getters: true })));
@@ -45,15 +66,37 @@ const createPost = async (req, res, next) => {
     return next(new HttpErr("Invalid inputs.", 422));
   }
 
-  const { img, description } = req.body;
+  const { img, description, creator } = req.body;
 
   const newPost = new Post({
     img,
     description,
+    creator,
   });
 
+  let user;
   try {
-    await newPost.save();
+    user = await User.findById(creator);
+  } catch (err) {
+    const error = new HttpErr(
+      "Search for user by id could not be performed",
+      500
+    );
+    return next(error);
+  }
+
+  if (!user) {
+    const error = new HttpErr("No user found with the provided id", 404);
+    return next(error);
+  }
+
+  try {
+    const sesh = await mongoose.startSession();
+    sesh.startTransaction();
+    await newPost.save({ session: sesh });
+    user.posts.push(newPost);
+    await user.save({ session: sesh });
+    await sesh.commitTransaction();
   } catch (err) {
     const error = new HttpErr("Failed to save post to db.", 500);
     return next(error);
@@ -98,17 +141,24 @@ const deletePost = async (req, res, next) => {
 
   let post;
   try {
-    post = await Post.findById(postId);
+    post = await Post.findById(postId).populate("creator");
   } catch (err) {
-    const error = new HttpErr(
-      "Could not delete post. Given post id does not match any post.",
-      404
-    );
+    const error = new HttpErr("Failed to search for post.", 500);
+    return next(error);
+  }
+
+  if (!post) {
+    const error = new HttpErr("Post with provided id does not exist", 404);
     return next(error);
   }
 
   try {
-    await post.deleteOne();
+    const sesh = await mongoose.startSession();
+    sesh.startTransaction();
+    await post.deleteOne({ session: sesh });
+    post.creator.posts.pull(post);
+    await post.creator.save({ session: sesh });
+    await sesh.commitTransaction();
   } catch (err) {
     const error = new HttpErr("Failed to delete post from db.", 500);
     return next(error);
@@ -120,6 +170,7 @@ const deletePost = async (req, res, next) => {
 
 module.exports = {
   getPostById,
+  getPostsByUserId,
   getAllPosts,
   createPost,
   updatePost,
