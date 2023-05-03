@@ -22,7 +22,7 @@ const Footer = () => {
           <AiFillLinkedin />
         </a>
       </div>
-      <div id="copyright">©2022-Almira Akin</div>
+      <div id="copyright">©2023-Almira Akin</div>
     </div>
   );
 };

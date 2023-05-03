@@ -16,45 +16,47 @@ import img11 from "../../imgs/almis_gallery/11.jpeg";
 import img12 from "../../imgs/almis_gallery/12.jpeg";
 import img13 from "../../imgs/almis_gallery/13.jpeg";
 import img14 from "../../imgs/almis_gallery/14.jpeg";
-import img15 from "../../imgs/almis_gallery/15.jpeg";
-import img16 from "../../imgs/almis_gallery/16.jpeg";
+import img15 from "../../imgs/almis_gallery/15.jpg";
+import img16 from "../../imgs/almis_gallery/16.jpg";
 import "./GalleryPage.css";
 
 const posts1 = [
   { title: "Sparkle's Nighttime Story", desc: "desc", img: img1 },
-  { title: "Sparkle Color Study", desc: "desc", img: img4 },
-  { title: "Bun Bun Sees a Rock", desc: "desc", img: img7 },
-  { title: "Dancers", desc: "desc", img: img10 },
-  { title: "Bad Intentions", desc: "desc", img: img12 },
-  //
-  { title: "Gator Friends", desc: "desc", img: img5 },
   { title: "Gator Rescue", desc: "desc", img: img2 },
-  { title: "Joshua Tree Trip", desc: "desc", img: img8 },
-  { title: "San Francisco", desc: "desc", img: img11 },
-  { title: "Frogster", desc: "desc", img: img14 },
-  //
   { title: "Sparkle and Didi", desc: "desc", img: img3 },
+  { title: "Sparkle Color Study", desc: "desc", img: img4 },
+  { title: "Gator Friends", desc: "desc", img: img5 },
   { title: "Glorby and Wanda", desc: "desc", img: img6 },
+  { title: "Bun Bun Sees a Rock", desc: "desc", img: img7 },
+  { title: "Joshua Tree Trip", desc: "desc", img: img8 },
   { title: "Garden of Hope", desc: "desc", img: img9 },
+  { title: "Dancers", desc: "desc", img: img10 },
+  { title: "San Francisco", desc: "desc", img: img11 },
+  { title: "Bad Intentions", desc: "desc", img: img12 },
   { title: "Mouse Trap", desc: "desc", img: img13 },
+  { title: "Frogster", desc: "desc", img: img14 },
+  { title: "Gator Babe", desc: "desc", img: img15 },
+  { title: "Bobby, My Honey", desc: "desc", img: img16 },
+  //
+  //
 ];
 
 const posts2 = [
   { title: "title", desc: "desc", img: img1 },
-  { title: "title", desc: "desc", img: img3 },
-  { title: "title", desc: "desc", img: img5 },
-  { title: "title", desc: "desc", img: img7 },
-  { title: "title", desc: "desc", img: img9 },
-  { title: "title", desc: "desc", img: img11 },
-  { title: "title", desc: "desc", img: img14 },
-  //
   { title: "title", desc: "desc", img: img2 },
+  { title: "title", desc: "desc", img: img3 },
   { title: "title", desc: "desc", img: img4 },
+  { title: "title", desc: "desc", img: img5 },
   { title: "title", desc: "desc", img: img6 },
+  { title: "title", desc: "desc", img: img7 },
   { title: "title", desc: "desc", img: img8 },
+  { title: "title", desc: "desc", img: img9 },
   { title: "title", desc: "desc", img: img10 },
+  { title: "title", desc: "desc", img: img11 },
   { title: "title", desc: "desc", img: img12 },
   { title: "title", desc: "desc", img: img13 },
+  { title: "title", desc: "desc", img: img14 },
+  //
 ];
 
 const posts3 = [

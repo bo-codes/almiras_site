@@ -6,9 +6,12 @@
 
 #img-prevs {
   /* border: 1px solid green; */
-  columns: 3 250px;
-  gap: 15px;
+  /* columns: 3 250px; */
+  /* gap: 15px; */
   margin-bottom: 6vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #gallery-container {
