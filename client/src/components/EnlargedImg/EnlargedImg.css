@@ -1,0 +1,37 @@
+#enlarged-post {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#enlarged-img-container {
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#enlarged-img {
+  display: block;
+  max-width: 77vw;
+  width: 100%;
+  height: fit-content;
+  max-height: 70vh;
+}
+
+#enlarged-title {
+  position:fixed;
+  /* bottom: 0; */
+  /* top: 0; */
+  /* background-color: black; */
+  color: white;
+}
+
+#enlarged-desc {
+  position: fixed;
+  /* bottom: 0; */
+  /* background-color: black; */
+  color: white;
+}

@@ -1,0 +1,47 @@
+.img-prev-container {
+  position: relative;
+  /* border: .4px solid #d972a1; */
+}
+
+.img-img {
+  display: block;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.img-prev-overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  /* background-color: #cfcfcf72; */
+  background-color: #d972a0b8;
+  /* background-color: rgba(255, 255, 255, 0.461); */
+  /* border: 1px solid red; */
+}
+
+.img-prev-container:hover .img-prev-overlay {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.img-prev-title {
+  color: white;
+  font-size: 16px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+  /*  */
+  text-transform: uppercase;
+  font-family: "chelsea-market-pro", sans-serif;
+  font-weight: 800;
+  font-style: bold;
+  letter-spacing: 2.4px;
+  padding: 10px 0;
+}

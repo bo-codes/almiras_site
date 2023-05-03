@@ -1,0 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#img-prevs {
+  /* border: 1px solid green; */
+  columns: 3 250px;
+  gap: 15px;
+  margin-bottom: 6vh;
+}
+
+#gallery-container {
+  max-width: 85%;
+  margin: 20px auto;
+}

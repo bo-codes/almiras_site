@@ -7,7 +7,7 @@ const Footer = () => {
       <div id="links">
         <a
           id="link"
-          href="https://www.instagram.com/almiraakinart/"
+          href="https://www.instagram.com/almiraakin/"
           target="_blank"
           rel="noreferrer"
         >
