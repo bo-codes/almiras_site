@@ -67,7 +67,7 @@ const GalleryPage = ({galleryImages}) => {
   const posts1 = [
     { title: "Sparkle's Nighttime Story", desc: "desc", img: img1 },
     { title: "Gator Rescue", desc: "desc", img: img2 },
-    { title: "Sparkle and Didi", desc: "desc", img: img3 },
+    // { title: "Sparkle and Didi", desc: "desc", img: img3 },
     { title: "Sparkle Color Study", desc: "desc", img: img4 },
     { title: "Protectors of Nature", desc: "desc", img: img4_5 },
     { title: "Gator Friends", desc: "desc", img: img5 },
